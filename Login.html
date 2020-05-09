@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+
+     <meta charset="UTF-8">
+        <title>Title</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/css/font-awesome-5.8.1.css">
+    <link rel="stylesheet" href="bootstrap/css/mdb.css">
+    <link rel="stylesheet" href="bootstrap/css/style.css">
+  
+</head>
+<style>
+    h1{
+        font-style: italic;
+    }
+    body{
+        background-color: gainsboro;
+    }
+    .login-section{
+        box-shadow: 0 0 5px black;
+        width: 300px;
+        text-align: center;
+        margin: 20px auto;
+        padding: 15px;
+        border-radius: 10px;
+        background-color: lightgoldenrodyellow;
+    }
+    input[type='text'] , input[type='email'] , input[type='password']{
+        font-size: 18px;
+        margin: 5px;
+        height: 35px;
+        border: 1px solid lightblue;
+        outline: none;
+        border-radius: 5px;
+    }
+    input[type=submit]{
+        font-size: 18px;
+        padding: 12px;
+        width: 210px;
+        margin: 5px;
+        background-color: lightgray;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+    }
+    input[type='submit']:hover{
+        background-color: darkgray;
+        color: white;
+    }
+    #error-msg h3{
+        background-color: yellow;
+        width: 300px;
+        text-align: center;
+        margin: 20px auto;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px black;
+        color: white;
+    }
+    .main-header{
+        background: linear-gradient(50deg,black,orangered);
+        color: white;
+    }
+    #suri{
+        margin-left:900px!important;
+
+    }
+
+</style>
+<body>
+<script>
+    // validate Form
+    let validateForm = () => {
+
+        let isFormValid = validateUser()
+            && validateEmail()
+            && validatePassword()
+            && validateConfirmPassword()
+            && validatePasswordsMatch();
+
+        // Logic
+        if(isFormValid){
+            alert('Form Submitted Successfully');
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    };
+
+    // Validate Username
+    let validateUser = () => {
+        let username = document.querySelector('#username').value;
+        if(username === ''){
+            applyColors('#username');
+            displayErrorMessage('User Name is Required');
+            return false;
+        }
+        else if(!username.match(/^[A-Za-z0-9_]{1,15}$/)){
+            applyColors('#username');
+            displayErrorMessage('No Special Characters');
+            return false;
+        }
+        else if(username.length < 5){
+            applyColors('#username');
+            displayErrorMessage('Enter at least 5 letters');
+            return false;
+        }
+        else{
+            removeColors('#username');
+            return true;
+        }
+    };
+
+    // Validate Email
+    let validateEmail = () => {
+        let email = document.querySelector('#email').value;
+        if(email === ''){
+            applyColors('#email');
+            displayErrorMessage('Email is Required');
+            return false;
+        }
+        else{
+            removeColors('#email');
+            return true;
+        }
+    };
+
+    // Validate Password
+    let validatePassword = () => {
+        let password = document.querySelector('#password').value;
+        if(password === ''){
+            applyColors('#password');
+            displayErrorMessage('Password is Required');
+            return false;
+        }
+        else{
+            removeColors('#password');
+            return true;
+        }
+    };
+
+    // Validate Confirm Password
+    let validateConfirmPassword = () => {
+        let c_password = document.querySelector('#c_password').value;
+        if(c_password === ''){
+            applyColors('#c_password');
+            displayErrorMessage('Confirm Password is Required');
+            return false;
+        }
+        else{
+            removeColors('#c_password');
+            return true;
+        }
+    };
+
+    // Validate PasswordsMatch
+    let validatePasswordsMatch = () => {
+        let password = document.querySelector('#password').value;
+        let c_password = document.querySelector('#c_password').value;
+        if(c_password !== password){
+            applyColors('#c_password');
+            applyColors('#password');
+            displayErrorMessage('Passwords not matched');
+            return false;
+        }
+        else{
+            removeColors('#c_password');
+            removeColors('#password');
+            return true;
+        }
+    };
+
+    // Apply colors
+    let applyColors = (fieldId) => {
+        let inputField = document.querySelector(`${fieldId}`);
+        inputField.style.border = '1px solid red';
+        inputField.style.boxShadow = '0 0 10px red';
+    };
+
+    // removeColors
+    let removeColors = (fieldId) => {
+        let inputField = document.querySelector(`${fieldId}`);
+        inputField.style.border = '1px solid green';
+        inputField.style.boxShadow = '0 0 10px green';
+    };
+
+    // display Error Message
+    let displayErrorMessage = (message) => {
+        let errorMsgDiv = document.querySelector('#error-msg');
+        let h3Tag = document.createElement('h3');
+        h3Tag.textContent = message;
+        h3Tag.style.backgroundColor = 'red';
+        errorMsgDiv.appendChild(h3Tag);
+        setTimeout(removeErrorMessage,5000);
+    };
+
+    // remove Error Message
+    let removeErrorMessage = () => {
+        document.querySelector('#error-msg h3').remove();
+    };
+
+</script>
+
+<header class="main-header ">
+    <h1 class="animated slideInRight" id="suri">School Management</h1>
+</header>
+<!------navbar---->
+<nav class="navbar navbar-dark text-success bg-primary navbar-expand-sm">
+
+    <div class="cotainer">
+        <div class="collapse navbar-collapse">
+            <div class="row">
+                <div class="cotainer animated slideInRight">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item active ">
+                            <a href="home.html"class=" active nav-link">
+                                <i class="fa fa-home ml-4 ">Home</i>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="news.html"class="nav-link">
+                                <i class="fa fa-newspaper ">News</i>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="gallery.html"class="nav-link">
+                                <i class="fa fa-image ">Gallery</i>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="About-us.html"class="nav-link">
+                                <i class="fa fa-id-card ">About Us</i>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="Login.html" class="nav-link mr-5">
+                                <i class="fa fa-user ">Login</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</nav>
+
+<!-- Display Error Message -->
+<div id="error-msg">
+
+</div>
+
+<!-- Form Validation -->
+<section class="login-section">
+    <h2>Login Here</h2>
+    <form onsubmit="return validateForm()" class="login-form" id="login-form">
+        <input type="text" placeholder="User Name" id="username">
+        <br>
+        <input type="email" placeholder="Email" id="email">
+        <br>
+        <input type="password" placeholder="Password" id="password">
+        <br>
+        <input type="password" placeholder="Confirm Password" id="c_password">
+        <br>
+        <input type="submit" value="Register">
+<!--        <a href="std-detail.html" class="btn btn-primary">Submit</a>-->
+    </form>
+
+</section>
+<section class="p-3">
+        <div class="container bg-primary">
+            <div class="row">
+                <div class="col">
+                    <div class="card text-center text-white bg-primary">
+                        <h3>Copyright © 2019 , UiBrains Techno Portal</h3>
+                        <p class="lead">All Rights Reserved</p>
+                        <h4>Developed & Designed By<i class="fa fa-users">
+                            <a href="home.html">Suri Dsr</a> </i> </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<script src="bootstrap/js/jquery-3.3.1.min.js"></script>
+<script src="bootstrap/js/popper.min.js"></script>
+<script src="bootstrap/js/bootstrap.js"></script>
+<script src="bootstrap/js/mdb.js"></script>
+<!--<script src="12_script.js"></script>-->
+</body>
+</html>
+
