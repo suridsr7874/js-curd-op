@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap/css/font-awesome-5.8.1.css">
+    <link rel="stylesheet" href="../bootstrap/css/mdb.css">
+    <link rel="stylesheet" href="../bootstrap/css/style.css">
+</head>
+<style>
+    nav, a{
+        background-color: teal;
+        color: white;
+        padding: 10px;
+        font-size: 18px;
+    }
+    .bg-teal{
+        background-color: teal;
+        color: white;
+    }
+    body{
+        background: linear-gradient(45deg,green,blue,teal,orangered,red);
+    }
+    .login-section{
+        box-shadow: 0 0 5px black;
+        width: 300px;
+        text-align: center;
+        margin: 20px auto;
+        padding: 15px;
+        border-radius: 10px;
+        background-color: lightgoldenrodyellow;
+    }
+    input[type='text'] , input[type='email'] , input[type='password']{
+        font-size: 18px;
+        margin: 5px;
+        height: 35px;
+        border: 1px solid lightblue;
+        outline: none;
+        border-radius: 5px;
+    }
+    input[type=submit]{
+        font-size: 18px;
+        padding: 12px;
+        width: 210px;
+        margin: 5px;
+        background-color: lightgray;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+    }
+    input[type='submit']:hover{
+        background-color: darkgray;
+        color: white;
+    }
+    #error-msg h3{
+        background-color: lightblue;
+        width: 300px;
+        text-align: center;
+        margin: 20px auto;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px black;
+        color: white;
+    }
+    /*.active{*/
+    /*    background-color: orangered;*/
+    /*    color: white;*/
+    /*}*/
+    .active:hover{
+        background-color: orangered;
+        color: #0b51c5;
+    }
+</style>
+<script>
+    // validate Form
+    let validateForm = () => {
+
+        let isFormValid = validateUser()
+            && validateEmail()
+            && validatePassword()
+            && validateConfirmPassword()
+            && validatePasswordsMatch();
+
+        // Logic
+        if(isFormValid){
+            alert('Form Submitted Successfully');
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    };
+
+    // Validate Username
+    let validateUser = () => {
+        let username = document.querySelector('#username').value;
+        if(username === ''){
+            applyColors('#username');
+            displayErrorMessage('User Name is Required');
+            return false;
+        }
+        else if(!username.match(/^[A-Za-z0-9_]{1,15}$/)){
+            applyColors('#username');
+            displayErrorMessage('No Special Characters');
+            return false;
+        }
+        else if(username.length < 5){
+            applyColors('#username');
+            displayErrorMessage('Enter at least 5 letters');
+            return false;
+        }
+        else{
+            removeColors('#username');
+            return true;
+        }
+    };
+
+    // Validate Email
+    let validateEmail = () => {
+        let email = document.querySelector('#email').value;
+        if(email === ''){
+            applyColors('#email');
+            displayErrorMessage('Email is Required');
+            return false;
+        }
+        else{
+            removeColors('#email');
+            return true;
+        }
+    };
+
+    // Validate Password
+    let validatePassword = () => {
+        let password = document.querySelector('#password').value;
+        if(password === ''){
+            applyColors('#password');
+            displayErrorMessage('Password is Required');
+            return false;
+        }
+        else{
+            removeColors('#password');
+            return true;
+        }
+    };
+
+    // Validate Confirm Password
+    let validateConfirmPassword = () => {
+        let c_password = document.querySelector('#c_password').value;
+        if(c_password === ''){
+            applyColors('#c_password');
+            displayErrorMessage('Confirm Password is Required');
+            return false;
+        }
+        else{
+            removeColors('#c_password');
+            return true;
+        }
+    };
+
+    // Validate PasswordsMatch
+    let validatePasswordsMatch = () => {
+        let password = document.querySelector('#password').value;
+        let c_password = document.querySelector('#c_password').value;
+        if(c_password !== password){
+            applyColors('#c_password');
+            applyColors('#password');
+            displayErrorMessage('Passwords not matched');
+            return false;
+        }
+        else{
+            removeColors('#c_password');
+            removeColors('#password');
+            return true;
+        }
+    };
+
+    // Apply colors
+    let applyColors = (fieldId) => {
+        let inputField = document.querySelector(`${fieldId}`);
+        inputField.style.border = '1px solid red';
+        inputField.style.boxShadow = '0 0 10px red';
+    };
+
+    // removeColors
+    let removeColors = (fieldId) => {
+        let inputField = document.querySelector(`${fieldId}`);
+        inputField.style.border = '1px solid green';
+        inputField.style.boxShadow = '0 0 10px green';
+    };
+
+    // display Error Message
+    let displayErrorMessage = (message) => {
+        let errorMsgDiv = document.querySelector('#error-msg');
+        let h3Tag = document.createElement('h3');
+        h3Tag.textContent = message;
+        h3Tag.style.backgroundColor = 'red';
+        errorMsgDiv.appendChild(h3Tag);
+        setTimeout(removeErrorMessage,3000);
+    };
+
+    // remove Error Message
+    let removeErrorMessage = () => {
+        document.querySelector('#error-msg h3').remove();
+    };
+</script>
+<body>
+<!-- Main Navbar -->
+<nav class="navbar navbar-dark bg-teal navbar-expand-sm">
+    <div class="container">
+        <a href="index.html" class="navbar-brand">
+            <img src="images-hsptl/download.jpg" style="width: 50px;height: 40px">
+            <span>  Hospital Management</span>
+        </a>
+        <div class="collapse navbar-collapse" id="uiNavbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active px-2">
+                    <a href="index.html" class="nav-link">
+                        <i class="fa fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a href="about.html" class="nav-link">
+                        <i class="fa fa-id-card"></i> About Us</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a href="gallery.html" class="nav-link">
+                        <i class="fa fa-camera"></i> gallery</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="active"href="registeration.html" class="nav-link">
+                        <i class="fa fa-user"></i> Registration</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a href="contact.html" class="nav-link">
+                        <i class="fa fa-phone"></i> Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Form Validation -->
+<section class="login-section">
+    <h2>Register Here</h2>
+    <form onsubmit="return validateForm()" class="login-form" id="login-form">
+        <input type="text" placeholder="User Name" id="username">
+        <br>
+        <input type="email" placeholder="Email" id="email">
+        <br>
+        <input type="password" placeholder="Password" id="password">
+        <br>
+        <input type="password" placeholder="Confirm Password" id="c_password">
+        <br>
+<!--        <input type="submit" value="Register">-->
+        <button ><a href="contact.html">register</a> </button>
+    </form>
+
+</section>
+<footer class="p-3 bg-teal text-white text-center">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-9">
+                <h3>Copyright © 2019 , UiBrains.com</h3>
+                <h6>All Rights Reserved</h6>
+                <h6>Developed & Maintained by
+                    <a class="text-warning" href="https://github.com/thenaveensaggam " target="_blank">
+                        <i class="fa fa-users"></i> UiBrains Technologies.
+                    </a>
+                </h6>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="btn btn-outline-white btn-block" data-toggle="modal" data-target="#contact-modal">Contact</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap/css/font-awesome-5.8.1.css">
+    <link rel="stylesheet" href="../bootstrap/css/mdb.css">
+    <link rel="stylesheet" href="../bootstrap/css/style.css">
+
+</head>
+<style>
+        .course-img{
+            border-top-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            border: 2px solid yellow;
+            overflow: hidden;
+            width: 300px;
+            height: 150px;
+            transition: all 0.5s;
+        }
+        .course-img:hover{
+            transform: scale(1.2,1.2);
+        }
+    .bg-teal{
+        background-color: teal;
+        color: white;
+    }
+    body{
+        background: linear-gradient(45deg,green,blue,teal,orangered,red);
+    }
+span, h1{
+    font-style: italic;
+}
+        /*.active{*/
+        /*    background-color: orangered;*/
+        /*    color: white;*/
+        /*}*/
+        .active:hover{
+            background-color: orangered;
+            color: #0b51c5;
+        }
+</style>
+<body>
+<!-- Main Navbar -->
+<nav class="navbar navbar-dark bg-teal navbar-expand-sm">
+    <div class="container">
+        <a href="index.html" class="navbar-brand">
+            <img src="images-hsptl/download.jpg" style="width: 50px;height: 40px">
+          <span>  Hospital Management</span>
+        </a>
+        <div class="collapse navbar-collapse" id="uiNavbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active px-2">
+                    <a href="index.html" class="nav-link">
+                        <i class="fa fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a href="about.html" class="nav-link">
+                        <i class="fa fa-id-card"></i> About Us</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="active" href="gallery.html" class="nav-link">
+                        <i class="fa fa-camera"></i> gallery</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a href="registeration.html" class="nav-link">
+                        <i class="fa fa-user"></i> Registration</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a href="contact.html" class="nav-link">
+                        <i class="fa fa-phone"></i> Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <h1 class="text-center">Hospital gallery</h1>
+    <hr>
+</div>
+<section class="p-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+            <img src="images-hsptl/download.jpg" class="img-fluid img-thumbnail course-img ">
+            </div>
+            <div class="col-md-3">
+                <img src="images-hsptl/download.jpg" class="img-fluid img-thumbnail course-img ">
+            </div>
+            <div class="col-md-3">
+                <img src="images-hsptl/download.jpg" class="img-fluid img-thumbnail course-img ">
+            </div>
+            <div class="col-md-3">
+                <img src="images-hsptl/download.jpg" class="img-fluid img-thumbnail course-img ">
+            </div>
+
+        </div>
+        </div>
+
+
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="images-hsptl/download.jpg" class="img-fluid img-thumbnail course-img ">
+            </div>
+            <div class="col-md-3">
+                <img src="images-hsptl/download.jpg" class="img-fluid img-thumbnail course-img ">
+            </div>
+            <div class="col-md-3">
+                <img src="images-hsptl/download.jpg" class="img-fluid img-thumbnail course-img ">
+            </div>
+            <div class="col-md-3">
+                <img src="images-hsptl/download.jpg" class="img-fluid img-thumbnail course-img ">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="images-hsptl/download.jpg" class="img-fluid img-thumbnail course-img ">
+            </div>
+            <div class="col-md-3">
+                <img src="images-hsptl/download.jpg" class="img-fluid img-thumbnail course-img ">
+            </div>
+            <div class="col-md-3">
+                <img src="images-hsptl/download.jpg" class="img-fluid img-thumbnail course-img ">
+            </div>
+            <div class="col-md-3">
+                <img src="images-hsptl/download.jpg" class="img-fluid img-thumbnail course-img ">
+            </div>
+
+        </div>
+    </div>
+
+</section>
+<footer class="p-3 bg-teal text-white text-center">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-9">
+                <h3>Copyright © 2019 , UiBrains.com</h3>
+                <h6>All Rights Reserved</h6>
+                <h6>Developed & Maintained by
+                    <a class="text-warning" href="https://github.com/thenaveensaggam " target="_blank">
+                        <i class="fa fa-users"></i> UiBrains Technologies.
+                    </a>
+                </h6>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="btn btn-outline-white btn-block" data-toggle="modal" data-target="#contact-modal">Contact</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
